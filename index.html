@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MarketWatchX - Crypto Tracker</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #2e003e, #0e0023 60%);
+      background-attachment: fixed;
+      color: #fff;
+      padding: 2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: repeating-linear-gradient(45deg, #6600ff33, #6600ff33 1px, transparent 1px, transparent 20px);
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ff00ff;
+      text-shadow: 0 0 8px #ff00ff;
+      z-index: 1;
+      position: relative;
+    }
+
+    .subheader {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #ccc;
+      z-index: 1;
+      position: relative;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card {
+      background: #1c002e;
+      border: 1px solid #8000ff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      width: 260px;
+      box-shadow: 0 0 15px #8000ff88, 0 0 5px #ff00ff33;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff00ffcc, 0 0 15px #8000ffaa;
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: #f0f;
+      text-shadow: 0 0 4px #f0f;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      color: #00ffcc;
+    }
+
+    .details {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      z-index: 1;
+      position: relative;
+    }
+
+    .footer a {
+      color: #ff99ff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>MarketWatchX</h1>
+  <p class="subheader">Live Cryptocurrency Prices • Cyberpunk UI</p>
+
+  <div class="cards" id="crypto-cards">
+    <!-- Cards injected by JS -->
+  </div>
+
+  <div class="footer">
+    © 2025 Sandeep Sharma. All Rights Reserved. | <a href="https://github.com/itzsandeepshrma" target="_blank">GitHub</a>
+  </div>
+
+  <script>
+    const apiURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,ripple,litecoin,cardano&order=market_cap_desc&sparkline=false';
+
+    async function fetchCrypto() {
+      try {
+        const res = await fetch(apiURL);
+        const data = await res.json();
+        const container = document.getElementById('crypto-cards');
+        container.innerHTML = '';
+
+        data.forEach(coin => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h2>${coin.name} (${coin.symbol.toUpperCase()})</h2>
+            <div class="price">$${coin.current_price.toLocaleString()}</div>
+            <div class="details">
+              <p>24h Change: <strong style="color:${coin.price_change_percentage_24h >= 0 ? '#0f0' : '#f55'};">
+                ${coin.price_change_percentage_24h.toFixed(2)}%
+              </strong></p>
+              <p>Market Cap: $${coin.market_cap.toLocaleString()}</p>
+              <p>Last Updated: ${new Date(coin.last_updated).toLocaleTimeString()}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error("API Error:", err);
+      }
+    }
+
+    fetchCrypto();
+    setInterval(fetchCrypto, 60000);
+  </script>
+
+</body>
+</html>

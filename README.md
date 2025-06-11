@@ -1,46 +1,70 @@
-## MarketWatchX
+# MarketWatchX
 
-MarketWatchX is a responsive, single-page application designed to provide users with real-time stock market insights. Built with modern web technologies, it offers an intuitive interface for tracking market trends and data.
+**MarketWatchX** is a real-time cryptocurrency market tracker built using the CoinGecko API. It provides live updates on popular cryptocurrencies including Bitcoin, Ethereum, Ripple, and more. The interface is clean, modern, and responsive — offering key stats like current price, percentage change, and market rank.
+
+---
 
 ## Features
 
-- Real-Time Data: Fetches up-to-date stock information to keep users informed.
-- Responsive Design: Ensures optimal viewing across various devices.
-- User-Friendly Interface: Simplifies navigation and data interpretation.
+- Real-time prices for top cryptocurrencies  
+- Data fetched from CoinGecko's public API  
+- Supports Bitcoin, Ethereum, Ripple, Litecoin, Cardano, and Monero  
+- Displays current price, 24h % change, and market cap rank  
+- Smooth and responsive design optimized for all devices  
+- Automatically updates data without page reload  
+- Lightweight and fast — no frameworks used
 
+---
 
-## Live Demo
+## Tech Stack
 
-Access the live application here: [MarketWatchX](https://itzsandeepshrma.github.io/MarketWatchX)
+- HTML5  
+- CSS3  
+- Vanilla JavaScript (ES6+)  
+- CoinGecko API
+- Hosted on GitHub Pages
 
-## Technologies Used
+---
 
-- HTML5: Structuring the content.
-- CSS3: Styling and layout.
-- JavaScript: Dynamic content and interactivity.
+## Live Preview & Source Code
 
-# VPS/Local Deployment 
+- [MarketWatchX](https://itzsandeepshrma.github.io/MarketWatchX)  
 
-To run the project locally:
+---
 
-1. Clone the repository:
+## Installation & Usage
 
-`git clone https://github.com/itzsandeepshrma/MarketWatchX.git`
+### Clone the repository
+```bash
+git clone https://github.com/itzsandeepshrma/MarketWatchX.git
+cd MarketWatchX
+open index.html
+```
 
-2. Navigate to the project directory:
+---
 
-`cd MarketWatchX`
+## How It Works
 
-3. Open **[index.html](https://github.com/itzsandeepshrma/MarketWatchX/blob/main/index.html)** in your preferred web browser.
+- Extracts price, percentage change, and rank from the response  
+- Updates DOM elements dynamically using JavaScript  
+- Re-fetches data on refresh for always-updated stats
 
+---
 
-## Contributing
+## Contribution
 
-Contributions are welcome Don't forget to **[fork](https://github.com/itzsandeepshrma/MarketWatchX/fork)** the repository and submit a **[pull request](https://github.com/itzsandeepshrma/MarketWatchX/pulls)** for any enhancements or bug fixes.
+Your feedback and contributions are welcome.
+
+- [Fork the Repository](https://github.com/itzsandeepshrma/MarketWatchX/fork)  
+- [Submit a Pull Request](https://github.com/itzsandeepshrma/MarketWatchX/pulls)  
+- [Open an Issue](https://github.com/itzsandeepshrma/MarketWatchX/issues)
+
+---
+
+**© 2025 sᴧɴᴅᴇᴇᴘ sʜᴧʀᴍᴧ ᴧʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ**
+
+---
 
 ## License
 
-This project is licensed under the **[MIT License](https://github.com/itzsandeepshrma/MarketWatchX/blob/main/LICENSE)**
-
-
-
+This project is licensed under the [MIT License](https://github.com/itzsandeepshrma/MarketWatchX/blob/main/LICENSE).
